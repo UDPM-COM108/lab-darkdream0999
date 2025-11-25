@@ -72,6 +72,7 @@ int main() {
         switch (luaChon) {
             case 1: bai1(); 
             break;
+            //case va break không cùng cấp bậc bạn nhé
             case 2: bai2();
             break;
             case 3: bai3(); 
