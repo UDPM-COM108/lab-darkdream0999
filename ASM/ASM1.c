@@ -1,4 +1,30 @@
 #include <stdio.h>
+#include <math.h>
+void Chucnang_1() {
+    int x;
+    printf("Nhap vao mot so nguyen: ");
+    scanf("%d", &x);
+
+    printf("Ban da nhap so: %d\n", x);
+    printf("So %d la so nguyen.\n", x);
+
+    int isPrime = 1;
+    if (x < 2) isPrime = 0;
+    else {
+        for (int i = 2; i <= sqrt(x); i++) {
+            if (x % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+    }
+    if (isPrime) printf("So %d la so nguyen to.\n", x);
+    else printf("So %d khong phai la so nguyen to.\n", x);
+
+    int k = sqrt(x);
+    if (x >= 0 && k * k == x) printf("So %d la so chinh phuong.\n", x);
+    else printf("So %d khong phai la so chinh phuong.\n", x);
+}
 int main(){
     int luaChon;
     do{
@@ -19,7 +45,7 @@ int main(){
     scanf("%d", &luaChon);
     switch (luaChon){
     
-    case 1: printf("1.Chuong trinh kiem tra so nguyen\n");
+    case 1: Chucnang_1();
         break;
     case 2: printf("2.Chuong trinh uoc so chung va boi chung cua 2 so\n");
         break;
@@ -46,5 +72,7 @@ int main(){
     }
 
 }while(luaChon != 0);
-     return 0;
+    return 0;
 }
+
+
