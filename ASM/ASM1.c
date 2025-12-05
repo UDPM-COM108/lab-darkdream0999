@@ -25,6 +25,32 @@ void Chucnang_1() {
     if (x >= 0 && k * k == x) printf("So %d la so chinh phuong.\n", x);
     else printf("So %d khong phai la so chinh phuong.\n", x);
 }
+
+int UCLN(int a, int b) {
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
+}
+
+int BCNN(int a, int b) {
+    return (a * b) / UCLN(a, b);
+}
+
+void Chucnang_2() {
+    int x, y;
+    printf("Nhap vao 2 so nguyen (x, y): ");
+    scanf("%d%d", &x, &y);
+
+    int ucln = UCLN(x, y);
+    int bcnn = BCNN(x, y);
+
+    printf("Uoc so chung lon nhat (UCLN) cua %d va %d la: %d\n", x, y, ucln);
+    printf("Boi so chung nho nhat (BCNN) cua %d va %d la: %d\n", x, y, bcnn);
+}
+
 int main(){
     int luaChon;
     do{
@@ -47,7 +73,7 @@ int main(){
     
     case 1: Chucnang_1();
         break;
-    case 2: printf("2.Chuong trinh uoc so chung va boi chung cua 2 so\n");
+    case 2: Chucnang_2();
         break;
     case 3: printf("3.Chuong trinh tinh tien cho quan karaoke\n");
         break;
