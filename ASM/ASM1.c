@@ -51,6 +51,34 @@ void Chucnang_2() {
     printf("Boi so chung nho nhat (BCNN) cua %d va %d la: %d\n", x, y, bcnn);
 }
 
+void Chucnang_3() {
+    int start, end;
+    printf("Nhap gio bat dau (12-23): ");
+    scanf("%d", &start);
+    printf("Nhap gio ket thuc (12-23): ");
+    scanf("%d", &end);
+
+    if (start < 12 || end > 23 || start >= end) {
+        printf("Khung gio khong hop le!\n");
+        return;
+    }
+
+    int gio = end - start;
+    double tongTien = 0;
+
+    if (gio <= 3) {
+        tongTien = gio * 150000;
+    } else {
+        tongTien = 3 * 150000 + (gio - 3) * 150000 * 0.7;
+    }
+
+    if (start >= 14 && start <= 17) {
+        tongTien *= 0.9;
+    }
+
+    printf("Tong tien karaoke: %.0f VND\n", tongTien);
+}
+
 int main(){
     int luaChon;
     do{
@@ -75,7 +103,7 @@ int main(){
         break;
     case 2: Chucnang_2();
         break;
-    case 3: printf("3.Chuong trinh tinh tien cho quan karaoke\n");
+    case 3: Chucnang_3();
         break;
     case 4: printf("4.Chuong trinh tinh tien dien\n");
         break;
