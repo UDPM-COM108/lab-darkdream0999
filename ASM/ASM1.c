@@ -79,6 +79,47 @@ void Chucnang_3() {
     printf("Tong tien karaoke: %.0f VND\n", tongTien);
 }
 
+void Chucnang_4() {
+    int kwh;
+    double tien = 0;
+
+    printf("Nhap so dien (kWh): ");
+    scanf("%d", &kwh);
+
+    if (kwh < 0) {
+        printf("So kWh khong hop le!\n");
+        return;
+    }
+
+    int remaining = kwh;
+
+    if (remaining > 400) { 
+        tien += (remaining - 400) * 2927;
+        remaining = 400;
+    }
+    if (remaining > 300) {
+        tien += (remaining - 300) * 2834;
+        remaining = 300;
+    }
+    if (remaining > 200) {
+        tien += (remaining - 200) * 2536;
+        remaining = 200;
+    }
+    if (remaining > 100) {
+        tien += (remaining - 100) * 2014;
+        remaining = 100;
+    }
+    if (remaining > 50) {
+        tien += (remaining - 50) * 1734;
+        remaining = 50;
+    }
+    if (remaining > 0) {
+        tien += remaining * 1678;
+    }
+
+    printf("So tien dien phai tra la: %.0f VND\n", tien);
+}
+
 int main(){
     int luaChon;
     do{
@@ -105,7 +146,7 @@ int main(){
         break;
     case 3: Chucnang_3();
         break;
-    case 4: printf("4.Chuong trinh tinh tien dien\n");
+    case 4: Chucnang_4();
         break;
     case 5: printf("5.Chuong trinh chuc nang doi tien\n");
         break;
