@@ -80,44 +80,45 @@ void Chucnang_3() {
 }
 
 void Chucnang_4() {
+
     int kwh;
     double tien = 0;
-
-    printf("Nhap so dien (kWh): ");
+    printf("Nhap so kWh: ");
     scanf("%d", &kwh);
 
-    if (kwh < 0) {
+    if (kwh <= 0) {
         printf("So kWh khong hop le!\n");
-        return;
     }
 
-    int remaining = kwh;
+    if (kwh <= 50)
+        tien = kwh * 1678;
+    else if (kwh <= 100)
+        tien = 50 * 1678 + (kwh - 50) * 1734;
+    else if (kwh <= 200)
+        tien = 50 * 1678 + 50 * 1734 + (kwh - 100) * 2014;
+    else if (kwh <= 300)
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kwh - 200) * 2536;
+    else if (kwh <= 400)
+        tien = 50*1678 + 50*1734 + 100*2014 + 100*2536 + (kwh - 300) * 2834;
+    else
+        tien = 50*1678 + 50*1734 + 100*2014 + 100*2536 + 100*2834 + (kwh - 400) * 2927;
 
-    if (remaining > 400) { 
-        tien += (remaining - 400) * 2927;
-        remaining = 400;
-    }
-    if (remaining > 300) {
-        tien += (remaining - 300) * 2834;
-        remaining = 300;
-    }
-    if (remaining > 200) {
-        tien += (remaining - 200) * 2536;
-        remaining = 200;
-    }
-    if (remaining > 100) {
-        tien += (remaining - 100) * 2014;
-        remaining = 100;
-    }
-    if (remaining > 50) {
-        tien += (remaining - 50) * 1734;
-        remaining = 50;
-    }
-    if (remaining > 0) {
-        tien += remaining * 1678;
-    }
+    printf("Tien dien: %.0f VND\n", tien);
+}
+void Chucnang_5(){
+    int menhGia[] = {500, 200, 100, 50, 20, 10, 5, 2, 1};
+    int soTien;
 
-    printf("So tien dien phai tra la: %.0f VND\n", tien);
+    printf("Nhap so tien can doi: ");
+    scanf("%d", &soTien);
+
+    for (int i = 0; i < 9; i++) {
+        int soTo = soTien / menhGia[i];
+        if (soTo > 0) {
+            printf("%d to %d\n", soTo, menhGia[i]);
+        }
+        soTien %= menhGia[i];
+    }
 }
 
 int main(){
@@ -148,7 +149,7 @@ int main(){
         break;
     case 4: Chucnang_4();
         break;
-    case 5: printf("5.Chuong trinh chuc nang doi tien\n");
+    case 5: Chucnang_5();
         break;
     case 6: printf("6.Chuong trinh tinh lai xuat vay ngan hang vay tra gop\n");
         break;
@@ -169,5 +170,4 @@ int main(){
 }while(luaChon != 0);
     return 0;
 }
-
 
